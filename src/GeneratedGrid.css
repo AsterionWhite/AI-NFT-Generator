@@ -1,6 +1,79 @@
-.generated-image {
-    display: block;
+.grid-container {
+    display: flex;
+    margin: 35px 0;
+}
+
+.underlying-grid-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    max-width: 620px;
+    justify-content: center;
+}
+
+.underlying-image {
+    display: flex;
     width: 300px;
     height: 300px;
-    background-color: aquamarine;
+    margin: 1px;
+    border-radius: 16px;
+    background-color: #282c34;
+    border: 1px solid rgba(127, 255, 212, 0.17);
+}
+.grid-wrapper {
+    position: absolute;
+    margin-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    max-width: 620px;
+    justify-content: flex-start;
+}
+
+
+.generated-image {
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin: 1px;
+
+    -webkit-animation: fadeInFromNone 1.2s ease-in;
+    -moz-animation: fadeInFromNone 1.2s ease-in;
+    -o-animation: fadeInFromNone 1.2s ease-in;
+    animation: fadeInFromNone 1.2s ease-in;
+
+    background: rgba(127, 255, 212, 0.7);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(127, 255, 212, 0.17);
+}
+
+ @keyframes fadeInFromNone {
+    0% {
+        background: rgba(127, 255, 212, 0.0);
+        border-radius: 16px;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(127, 255, 212, 0.17);
+    }
+
+    60% {
+        background: rgba(127, 255, 212, 0.4);
+        border-radius: 16px;
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(127, 255, 212, 0.17);
+    }
+
+    80% {
+        background: rgba(127, 255, 212, 0.6);
+        border-radius: 16px;
+        box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(127, 255, 212, 0.17);
+    }
+
+    100% {
+        background: rgba(127, 255, 212, 0.7);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(127, 255, 212, 0.17);
+    }
 }

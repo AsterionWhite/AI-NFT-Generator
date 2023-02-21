@@ -14,38 +14,33 @@ const GenerateNFT = () => {
 
   const onSubmitFormHandler = async (e) => {
     e.preventDefault();
-    // setLoadingGeneratingImages(true);
+    setLoadingGeneratingImages(true);
 
-    // try {
-    //   const generatedImagesResponse = await generateImage(
-    //     inputQuery,
-    //     selectedQuantity,
-    //     selectedSize
-    //   );
+    try {
+      const generatedImagesResponse = await generateImage(
+        inputQuery,
+        selectedQuantity,
+        selectedSize
+      );
 
-    //   if (generatedImagesResponse.data && generatedImagesResponse.data.data) {
-    //     setGeneratedImages(generatedImagesResponse.data.data);
-    //     setLoadingGeneratingImages(false);
-    //   }
-    // } catch (error) {
-    //   setGeneratingImageError(error.response.data.error.message);
-    //   setLoadingGeneratingImages(false);
-    // }
+      if (generatedImagesResponse.data && generatedImagesResponse.data.data) {
+        setGeneratedImages(generatedImagesResponse.data.data);
+        setLoadingGeneratingImages(false);
+      }
+    } catch (error) {
+      setGeneratingImageError(error.response.data.error.message);
+      setLoadingGeneratingImages(false);
+    }
   };
 
   const showGeneratedGrid =
-    // loadingGeneratingImages || generatedImages.length > 0;
-    true;
-
-  console.log(showGeneratedGrid, "show it ????");
+    loadingGeneratingImages || generatedImages.length > 0;
+  // true;
 
   const generatedImagesData =
     generatedImages.length > 0
       ? generatedImages
       : Array(selectedQuantity).fill({ url: null });
-
-  console.log(generatedImagesData, "generatedImagesData ??? >>>> ?");
-  // console.log(generateArray, "fake generateArray ??? >>>> ?");
 
   return (
     <>
