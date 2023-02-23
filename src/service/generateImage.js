@@ -10,7 +10,7 @@ export const generateImage = (inputQuery, selectedQuantity, selectedSize) => {
     },
     {
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI}`,
+        Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_API_KEY}`,
       },
     }
   );

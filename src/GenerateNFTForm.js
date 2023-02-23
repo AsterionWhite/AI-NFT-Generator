@@ -12,9 +12,22 @@ const GenerateNFT = () => {
   const [generatingImageError, setGeneratingImageError] = useState(null);
   const [loadingGeneratingImages, setLoadingGeneratingImages] = useState(false);
 
+  const scrollIntoViewNft = () => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 500,
+        behavior: "smooth",
+      });
+    }, 500);
+  };
+
   const onSubmitFormHandler = async (e) => {
+    // Prevent page from reloading
     e.preventDefault();
+    // Set loading state
     setLoadingGeneratingImages(true);
+    // Scroll the page so the NFT cards to be fully visible
+    scrollIntoViewNft();
 
     try {
       const generatedImagesResponse = await generateImage(
