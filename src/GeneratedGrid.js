@@ -14,7 +14,8 @@ const GeneratedGrid = ({ generatedImages }) => {
   const greateIpfsNode = async() => {
     try {
       if(!ipfs) {
-        ipfs = await IPFS.create({repo: 'ok'+ Math.random()})
+        console.log('trying ..........')
+        ipfs = await IPFS.create({repo:'ok'+Math.random()})
       }
       
     } catch (error) {
@@ -24,10 +25,10 @@ const GeneratedGrid = ({ generatedImages }) => {
 
 
   const selectImage = async(imageUrl) => {
-    console.log(imageUrl, 'ur; ???');
     let file;
     if(ipfs) {
-      file = await ipfs.add(IPFS.urlSource(imageUrl));
+      console.log(imageUrl, 'ur; ???');
+      file = await ipfs.add(JSON.stringify(IPFS.urlSource(imageUrl)));
     }
 
     console.log(file, 'file ...')
