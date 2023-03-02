@@ -77,3 +77,22 @@
         border: 1px solid rgba(127, 255, 212, 0.17);
     }
 }
+
+.hidden-overlay {
+    display: none;
+    width: 0;
+    height: 0;
+}
+.image-selected + div {        
+    width: 303px !important;
+    height: 303px !important;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(57, 57, 57, 0.5);
+    pointer-events: none;
+    border-radius: 16px;
+      
+}

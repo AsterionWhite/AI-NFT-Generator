@@ -5,7 +5,7 @@ import GeneratedGrid from "./GeneratedGrid";
 import { generateImage } from "./service/generateImage";
 
 const GenerateNFT = () => {
-  const [inputQuery, setInputQuery] = useState(null);
+  const [inputQuery, setInputQuery] = useState("");
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(NFT_SIZES.medium);
   const [generatedImages, setGeneratedImages] = useState([]);
