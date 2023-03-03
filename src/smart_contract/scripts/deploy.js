@@ -2,7 +2,7 @@ const ethers = require("ethers");
 require("dotenv").config();
 
 async function main() {
-  const url = process.env.REACT_APP_GOERLI_TESTNET_URL;
+  const url = process.env.REACT_APP_MUMBAI_TESTNET_URL;
 
   let artifacts = await hre.artifacts.readArtifact("AiNFTGenerator");
 

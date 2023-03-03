@@ -1,5 +1,6 @@
 .grid-container {
     display: flex;
+    flex-direction: column;
     margin: 35px 0;
 }
 
@@ -30,6 +31,9 @@
     justify-content: flex-start;
 }
 
+.generated-image-wrapper {
+    position: relative;
+}
 
 .generated-image {
     display: flex;
@@ -83,9 +87,10 @@
     width: 0;
     height: 0;
 }
+
 .image-selected + div {        
-    width: 303px !important;
-    height: 303px !important;
+    width: 303px;
+    height: 303px;
     position: absolute;
     top: 0;
     display: flex;
@@ -95,4 +100,71 @@
     pointer-events: none;
     border-radius: 16px;
       
+}
+
+.image-selected ~ .add-meta-data-btn {
+    position: absolute;
+    display: inline !important;
+    bottom: 1px;
+    height: 27px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0.75;
+}
+.add-meta-data-btn {
+    display: none;
+}
+
+.expand-image {
+    position: absolute;
+    width: 610px;
+    height: 610px;
+    z-index: 2;
+    left: 15px;
+    top: 15px;
+}
+
+.expand-image > .add-meta-data-btn {
+    bottom: -3px;
+}
+
+.expand-image > img {
+    width: 100%;
+    height: 100%;
+    left: 15px;
+}
+
+.expand-image ~ .add-meta-data-btn {
+    z-index: 3;
+}
+
+.expand-image > div.hidden-overlay {
+    width: 100% !important;
+    height: 100% !important; 
+    pointer-events: all !important;
+    padding: 2px;
+}
+
+/* Hide checkmark icon on expanded image */
+
+.expand-image > div.hidden-overlay > img {
+    display: none;
+}
+
+.expand-image-wrapper {
+    position: initial !important;
+}
+
+.metadata-textarea {
+    width: 280px;
+    height: 280px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    opacity: 0.85;
+    resize: none;
 }

@@ -5,8 +5,8 @@ module.exports = {
   solidity: "0.8.9",
   allowUnlimitedContractSize: true,
   networks: {
-    goerli: {
-      url: process.env.REACT_APP_GOERLI_TESTNET_URL,
+    mumbai: {
+      url: process.env.REACT_APP_MUMBAI_TESTNET_URL,
       accounts: [process.env.REACT_APP_WALLET_PRIV_KEY],
     },
   },

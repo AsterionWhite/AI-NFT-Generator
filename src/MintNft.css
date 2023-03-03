@@ -1,0 +1,15 @@
+.mint-nft-wrapper {
+    display: flex;
+    flex: 1;
+    margin: 25px 0;
+}
+
+.mint-nft-btn {
+    width: 95%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.connection-error-message {
+    padding: 15px;
+}

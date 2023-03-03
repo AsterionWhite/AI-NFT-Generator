@@ -15,13 +15,17 @@ const GenerateNFT = () => {
   const scrollIntoViewNft = () => {
     setTimeout(() => {
       window.scrollTo({
-        top: 500,
+        top: 600,
         behavior: "smooth",
       });
     }, 500);
   };
 
   const onSubmitFormHandler = async (e) => {
+    // Reset error if any exists
+    if(generatingImageError) {
+      setGeneratingImageError(null);
+    }
     // Prevent page from reloading
     e.preventDefault();
     // Set loading state
