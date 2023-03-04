@@ -1,6 +1,6 @@
 import "./App.css";
 
-import GenerateNFTForm from "./GenerateNFTForm";
+import GenerateNFTForm from "./components/GeneratedNFTForm/GenerateNFTForm";
 
 function App() {
   console.log(process.env.REACT_APP_OPEN_AI_KEY, "yeah >>>>");

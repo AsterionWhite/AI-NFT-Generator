@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./GenerateNFTForm.css";
-import { NFT_SIZES } from "./const";
-import GeneratedGrid from "./GeneratedGrid";
-import { generateImage } from "./service/generateImage";
+import { NFT_SIZES } from "../../const";
+import GeneratedGrid from "../GeneratedGrid/GeneratedGrid";
+import { generateImage } from "../../service/generateImage";
 
 const GenerateNFT = () => {
   const [inputQuery, setInputQuery] = useState("");
