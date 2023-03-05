@@ -44,6 +44,7 @@ const GeneratedGrid = ({ generatedImages }) => {
         {generatedImages.map((image, idx) => {
           return (
             <GeneratedNFTCard
+              key={`generated-image-${idx}`}
               image={image}
               imageIdx={idx}
               selectedImages={selectedImages}

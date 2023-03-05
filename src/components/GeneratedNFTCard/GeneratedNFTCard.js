@@ -11,20 +11,22 @@ const GeneratedNFTCard = (props) => {
   const [metadataInput, setMetadataInput] = useState(null);
   const [metadataInputError, setMetadataInputError] = useState(null);
 
-
   const selectImage = async (e, imageUrl) => {
-    const imageUrlExistsInCollection = selectedImages.indexOf(imageUrl) >= 0;
-    let imageUrlCollection = [...selectedImages, imageUrl];
+    const imageUrlExistsInCollection = selectedImages.some(image => image.imageURL === imageUrl);
+    let imageUrlCollection = [...selectedImages, {imageURL: imageUrl, metadata: null}];
 
     e.currentTarget.classList.toggle("image-selected");
 
     if (imageUrlExistsInCollection) {
-      imageUrlCollection = imageUrlCollection.filter((url) => url !== imageUrl);
+      imageUrlCollection = imageUrlCollection.filter((url) => url.imageURL !== imageUrl);
     }
+
     setSelectedImages(imageUrlCollection);
   };
 
-  const toggleMetaDataForm = () => {
+  const toggleMetaDataForm = (imageUrl) => {
+    const { selectedImages: selectedNFTImages } = props;
+
     if (activeMetadataForm) {
       const isValidJSON = validateJSONMetadata(metadataInput);
 
@@ -44,6 +46,17 @@ const GeneratedNFTCard = (props) => {
 
         return;
       }
+
+      // If the JSON is valid , append the metadata to the url of that image
+      const updateNFTMetadata = selectedNFTImages.filter(nft => {
+        if(nft.imageURL === imageUrl) {
+          nft.metadata = metadataInput;
+        }
+
+        return true;
+      });
+
+      setSelectedImages(updateNFTMetadata);
     }
 
     // Find selected image and its wrapper
@@ -96,7 +109,7 @@ const GeneratedNFTCard = (props) => {
         )}
       </div>
       <button
-        onClick={toggleMetaDataForm}
+        onClick={() => toggleMetaDataForm(image.url)}
         className="add-meta-data-btn"
         type="button"
       >
@@ -107,7 +120,7 @@ const GeneratedNFTCard = (props) => {
     <div className="generated-image" src={image.url} />
   );
   return (
-    <div className="generated-image-wrapper" key={`generated-image-${imageIdx}`}>
+    <div className="generated-image-wrapper">
       {nftCardElement}
     </div>
   );

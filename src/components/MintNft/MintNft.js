@@ -9,7 +9,7 @@ const MintNft = (props) => {
   const [walletAddress, setWalletAddress] = useState("");
   const [connectionError, setConnectionError] = useState(null);
 
-  console.log(props, "props");
+  // console.log(props, "props");
 
   const mintNftHandler = async () => {
     if (connectionError) {
@@ -21,7 +21,7 @@ const MintNft = (props) => {
         return image + '&meta=my meta data'
     })
 
-    console.log(addMetaData, 'meta data .....')
+    // console.log(addMetaData, 'meta data .....')
 
     const result = [];
     if (ipfsNode) {
@@ -43,7 +43,7 @@ const MintNft = (props) => {
     }
   };
 
-  console.log(readyToMint, "ready to mint");
+  // console.log(readyToMint, "ready to mint");
 
   return (
     <>
