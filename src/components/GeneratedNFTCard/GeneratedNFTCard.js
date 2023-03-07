@@ -28,6 +28,7 @@ const GeneratedNFTCard = (props) => {
     const { selectedImages: selectedNFTImages } = props;
 
     if (activeMetadataForm) {
+      console.log(metadataInput, 'input metadata')
       const isValidJSON = validateJSONMetadata(metadataInput);
 
       if (!isValidJSON) {
@@ -47,10 +48,13 @@ const GeneratedNFTCard = (props) => {
         return;
       }
 
+      // Remove extra whitespace from the JSON object
+      const jsonInput = JSON.stringify(JSON.parse(metadataInput));
+
       // If the JSON is valid , append the metadata to the url of that image
       const updateNFTMetadata = selectedNFTImages.filter(nft => {
         if(nft.imageURL === imageUrl) {
-          nft.metadata = metadataInput;
+          nft.metadata = jsonInput;
         }
 
         return true;

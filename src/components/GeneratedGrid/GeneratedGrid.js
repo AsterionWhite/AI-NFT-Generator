@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import MintNft from "../MintNft/MintNft";
 import GeneratedNFTCard from "../GeneratedNFTCard/GeneratedNFTCard";
 
+let opts = {
+  repo: 'okkk' + Math.random(),
+  config:{
+   bootstrap: []
+  }
+ }
+
 const GeneratedGrid = ({ generatedImages }) => {
   const underlyingGridCards = Array(4).fill({ url: null });
 
@@ -19,8 +26,15 @@ const GeneratedGrid = ({ generatedImages }) => {
   const greateIpfsNode = async () => {
     try {
       if (!ipfsNode) {
-        ipfs = await IPFS.create({ repo: "ok" + Math.random() });
-        setIpfsNode(ipfs);
+        ipfs = await IPFS.create({ repo: "okkk" });
+
+        let bootstrap = await ipfs.bootstrap.list();
+        opts.config.bootstrap = bootstrap;
+
+        const node = await IPFS.create(opts)
+
+
+        setIpfsNode(node);
       }
     } catch (error) {
       console.log(error, "ipfs create error");
@@ -28,6 +42,8 @@ const GeneratedGrid = ({ generatedImages }) => {
   };
 
   const readyToMint = selectedImages.length > 0;
+
+  console.log(ipfsNode, 'ifs running node')
 
   return (
     <div className="grid-container">

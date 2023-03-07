@@ -1,6 +1,6 @@
 export const validateJSONMetadata = (metadataInput) => {
     // Empty text area input should let user to exit the window
-    if (!metadataInput) {
+    if (!metadataInput || metadataInput === '') {
       return true;
     }
     try {
