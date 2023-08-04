@@ -3,7 +3,7 @@ Generate AI art with Dall-E , mint that art on Polygon chain within seconds !
 
 ## To run the project there are a few prerequisites to take care of:
 
-### Smart Contract level keys ( smart_contract => .env)
+### Smart Contract level keys ( src/smart_contract/.env)
 - Get the project network https key URL for Polygon Mumbai network from Alchemy => https://www.alchemy.com/ and paste it here => REACT_APP_MUMBAI_TESTNET_URL= 
 - Get your wallet private key and paste it here => REACT_APP_WALLET_PRIV_KEY=
 - Get some Mumbai Matic tokens in your wallet => https://mumbaifaucet.com/ ( 1 MATIC token is more than enough ).
@@ -13,7 +13,7 @@ Generate AI art with Dall-E , mint that art on Polygon chain within seconds !
 - The command to deploy the smart contract is: `npx hardhat run scripts/deploy.js --network mumbai`
 
 
-### Client app level keys ( root lvl => .env )
+### Client app level keys ( src/.env )
 - To be able to generate image from text with Dall-E you need an API key from here => https://platform.openai.com/ and then paste it here => REACT_APP_OPEN_AI_API_KEY=
 - Get the project API KEY from here => https://www.alchemy.com/ and paste it here => REACT_APP_ALCHEMY_API_KEY=
 - Get your wallet private key again and paste it here => REACT_APP_WALLET_PRIV_KEY
