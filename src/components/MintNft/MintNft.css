@@ -1,13 +1,26 @@
 .mint-nft-wrapper {
     display: flex;
     flex: 1;
-    margin: 25px 0;
+    margin-bottom: 25px;
 }
 
 .mint-nft-btn {
     width: 95%;
     text-align: center;
     margin: 0 auto;
+    color: #07390c;
+    opacity: 0.75;
+    border: 2px solid #07390c;
+    border-radius: 7px;
+    background-color: whitesmoke;
+    font-weight: 700;
+    padding: 10px 5px;
+    transition: 0.25s ease-in-out;
+}
+
+.mint-nft-btn:hover {
+    border-color: whitesmoke;
+    transition: 0.25s ease-in-out;
 }
 
 .connection-error-message {

@@ -1,17 +1,39 @@
+.form-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.generation-form-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .container {
     height: 100%;
-    width: 70vw;
+    width: 45%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    margin-top: 15vh;
-    margin-bottom: 10vh;
 }
 
 .flex-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 85%;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+.main-heading {
+    width: 100%;
+    font-size: 1em;
+    padding: 50px 50px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .description {
@@ -20,15 +42,21 @@
     justify-content: flex-start;
 }
 
+.error-description {
+    display: block;
+    text-align: center;
+    color: salmon;
+}
+
 .margin {
-    margin: 20px 25px;
+    margin: 15px 25px;
 }
 
 .generate-input {
     display: flex;
-    flex: 1;
-    align-self: center;
-    padding: 8px;
+    width: 85%;
+    max-width: 650px;
+    padding: 12px;
     border-radius: 5px;
 }
 
@@ -37,28 +65,88 @@
     align-self: flex-start;
     padding: 10px 8px;
     border-radius: 5px;
+    width: 125px;
 }
 
 .generate-button-wrapper {
+    position: relative;
     display: flex;
     flex: 1;
     flex-direction: row-reverse;
+}
+
+@-webkit-keyframes background-animation {
+    from {
+        background-position: 0% 0%
+    }
+    to { 
+        background-position: 187% 0%
+    }
+}
+
+@keyframes background-animation {
+    from {
+        background-position: 0% 0%
+    }
+    to { 
+        background-position: 187% 0%
+    }
 }
 
 .generate-btn {
     width: 200px;
     margin-top: 35px;
     padding: 10px 35px;
-    border-radius: 5px;
-    background-color: white;
-}
+    border-radius: 7px;
+    color: #07390c;
+    opacity: 0.75;
+    border: 2px solid #07390c;
+    background-color: whitesmoke;
+    font-weight: 700;
+    padding: 10px 5px;
+    transition: 0.25s ease-in-out;
+} 
 
 .generate-btn:hover {
-    color: black;
-    font-weight: 600;
-    background-color: whitesmoke;
+    border-color: whitesmoke;
+    transition: 0.25s ease-in-out;
 }
 
-.generate-btn:active {
-    background-color: white;
+.wallet-wrapper {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.connect-wallet {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 35px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    color: #07390c;
+    border: none;
+    font-weight: bolder;
+    font-size: 16px;
+
+    animation: background-animation 10s linear infinite;
+    
+    background-color: whitesmoke;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%2307390c' fill-opacity='0.44'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    transition: 0.25s ease-in-out;
+}
+
+.connect-wallet:hover {
+    animation-play-state: paused;
+    background-color: darkgray;
+    color: white;
+    transition: 0.25s ease-in-out;
+}
+
+.warning-message {
+    font-size: 15px;
+    color: goldenrod;
+    text-decoration: underline;
+    margin-bottom: 40px;
 }

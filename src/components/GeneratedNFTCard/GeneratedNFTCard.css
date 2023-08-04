@@ -6,14 +6,23 @@
     display: flex;
     width: 300px;
     height: 300px;
+    margin: 2px;
+    border-radius: 16px;
+}
+
+.generated-image-placeholder {
+    display: flex;
+    width: 300px;
+    height: 300px;
     margin: 1px;
+    opacity: 0.5;
 
     -webkit-animation: fadeInFromNone 1.2s ease-in;
     -moz-animation: fadeInFromNone 1.2s ease-in;
     -o-animation: fadeInFromNone 1.2s ease-in;
     animation: fadeInFromNone 1.2s ease-in;
 
-    background: rgba(127, 255, 212, 0.7);
+    background: #99eda0;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(127, 255, 212, 0.17);
@@ -35,14 +44,14 @@
     }
 
     80% {
-        background: rgba(127, 255, 212, 0.6);
+        background: #99eda0;
         border-radius: 16px;
         box-shadow: 0 0px 30px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(127, 255, 212, 0.17);
     }
 
     100% {
-        background: rgba(127, 255, 212, 0.7);
+        background: #99eda0;
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(127, 255, 212, 0.17);
@@ -69,6 +78,14 @@
       
 }
 
+.minted + div {
+    background-color: rgba(218, 165, 32, 0.5) !important;
+}
+
+.minted + div:after {
+    content: '\A Minted !';
+}
+
 .image-selected ~ .add-meta-data-btn {
     position: absolute;
     display: inline !important;
@@ -82,7 +99,17 @@
     right: 0;
     width: 100%;
     opacity: 0.75;
+    transition: 0.25s ease-in-out;
 }
+
+.image-selected ~ .add-meta-data-btn:hover {
+    transition: 0.25s ease-in-out;
+    border: 2px solid black;
+    font-size:16px;
+    opacity: 0.75;
+}
+
+
 .add-meta-data-btn {
     display: none;
 }

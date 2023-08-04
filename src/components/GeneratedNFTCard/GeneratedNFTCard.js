@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import checkmark from "../../assets/check64.png";
 import { validateJSONMetadata } from "../../helpers/validateJSONMetadata";
 import './GeneratedNFTCard.css';
+
 
 const GeneratedNFTCard = (props) => {
 
@@ -11,24 +12,41 @@ const GeneratedNFTCard = (props) => {
   const [metadataInput, setMetadataInput] = useState(null);
   const [metadataInputError, setMetadataInputError] = useState(null);
 
+
+  useEffect(() => {
+    document.addEventListener('minted', () => {
+      const findSelectedImage = document.getElementsByClassName('image-selected');
+      findSelectedImage[0].classList.add('minted');
+      setMetadataInput(null);
+    })
+
+    return () => {
+      document.removeEventListener('minted', () => null)
+    }
+  } , []);
+
   const selectImage = async (e, imageUrl) => {
     const imageUrlExistsInCollection = selectedImages.some(image => image.imageURL === imageUrl);
-    let imageUrlCollection = [...selectedImages, {imageURL: imageUrl, metadata: null}];
 
-    e.currentTarget.classList.toggle("image-selected");
+    let imageUrlCollection = [...selectedImages, {imageURL: imageUrl, metadata: null}];
 
     if (imageUrlExistsInCollection) {
       imageUrlCollection = imageUrlCollection.filter((url) => url.imageURL !== imageUrl);
     }
 
-    setSelectedImages(imageUrlCollection);
+    if(imageUrlCollection.length <= 1) {
+      setSelectedImages(imageUrlCollection);
+    }else {
+      return null;
+    }
+
+    e.currentTarget.classList.toggle("image-selected");
   };
 
   const toggleMetaDataForm = (imageUrl) => {
     const { selectedImages: selectedNFTImages } = props;
 
     if (activeMetadataForm) {
-      console.log(metadataInput, 'input metadata')
       const isValidJSON = validateJSONMetadata(metadataInput);
 
       if (!isValidJSON) {
@@ -49,7 +67,7 @@ const GeneratedNFTCard = (props) => {
       }
 
       // Remove extra whitespace from the JSON object
-      const jsonInput = JSON.stringify(JSON.parse(metadataInput));
+      const jsonInput = metadataInput && metadataInput.length > 0 ? JSON.stringify(JSON.parse(metadataInput)) : null;
 
       // If the JSON is valid , append the metadata to the url of that image
       const updateNFTMetadata = selectedNFTImages.filter(nft => {
@@ -86,16 +104,22 @@ const GeneratedNFTCard = (props) => {
     }
   };
 
-  const buttonText = activeMetadataForm
-    ? "Save metadata"
-    : "Add custom metadata to your NFT !";
-  // EXTRACT TO A NEW COMPONENT
-  const nftCardElement = image.url ? (
+  let buttonText = "Add metadata to your NFT !";
+
+  if(activeMetadataForm) {
+    buttonText = "Save metadata";
+  }
+  if(selectedImages.length > 0 && selectedImages[0].metadata) {
+    buttonText = "Metadata applied !"
+  }
+
+  const nftCardElement = image.b64_json ? (
     <div className="grid-image-wrapper">
       <img
-        onClick={(e) => selectImage(e, image.url)}
+        onClick={(e) => selectImage(e, image.b64_json)}
         className="generated-image"
-        src={image.url}
+        src={`data:image/png;base64,${image.b64_json}`}
+        
       />
       <div className="hidden-overlay">
         <img src={checkmark} />
@@ -104,16 +128,21 @@ const GeneratedNFTCard = (props) => {
             <p>{metadataInputError && metadataInputError}</p>
             <textarea
               onChange={(e) => setMetadataInput(e.target.value)}
-              placeholder="Enter a valid JSON object for your metadata"
+              placeholder='{
+                "name": "My awesome AI generated NFT",
+                "description": "Dog walking on the street",
+                ......
+              }'
               draggable={false}
               maxLength={250}
               className="metadata-textarea"
+              value={metadataInput}
             />
           </div>
         )}
       </div>
       <button
-        onClick={() => toggleMetaDataForm(image.url)}
+        onClick={() => toggleMetaDataForm(image.b64_json)}
         className="add-meta-data-btn"
         type="button"
       >
@@ -121,12 +150,14 @@ const GeneratedNFTCard = (props) => {
       </button>
     </div>
   ) : (
-    <div className="generated-image" src={image.url} />
+    <div className="generated-image-placeholder" src={`data:image/png;base64,${image.b64_json}`} />
   );
   return (
+    <>
     <div className="generated-image-wrapper">
       {nftCardElement}
     </div>
+    </>
   );
 };
 
